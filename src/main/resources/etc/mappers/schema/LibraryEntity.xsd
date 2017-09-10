@@ -1,0 +1,34 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="unqualified" targetNamespace="unqualified"
+	elementFormDefault="unqualified">
+	
+	<xsd:element name="library" type="Library"></xsd:element>
+
+	<xsd:simpleType name="InstitutionType" final="restriction">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Academic" />
+			<xsd:enumeration value="Professional" />
+			<xsd:enumeration value="Other" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="Library">
+		<xsd:sequence>
+			<xsd:element name="libraryID" type="xsd:int" />
+			<xsd:element minOccurs="0" name="booksCount" type="xsd:int" />
+			<xsd:element minOccurs="0" name="institutionCode" type="xsd:string" />
+			<xsd:element minOccurs="0" name="institutionType" type="InstitutionType" />
+			<xsd:element minOccurs="0" maxOccurs="unbounded" name="bookList" type="Book" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	<xsd:complexType name="Book">
+		<xsd:sequence>
+			<xsd:element name="bookID" type="xsd:int" />
+			<xsd:element minOccurs="0" name="name" type="xsd:string" />
+			<xsd:element minOccurs="0" name="author" type="xsd:string" />
+			<xsd:element minOccurs="0" name="pages" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>  
